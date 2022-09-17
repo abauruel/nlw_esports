@@ -8,6 +8,4 @@ app.use(express.json());
 app.use(cors());
 app.use(route);
 
-app.get("/", () => console.log("chamou"));
-
 export { app };

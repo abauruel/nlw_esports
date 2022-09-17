@@ -11,9 +11,7 @@ const prisma = new PrismaClient();
 
 route.get("/games/top", async (request: Request, response: Response) => {
   const token = await getToken();
-
   const gamesTop = await getTopGames(token.access_token);
-
   return response.json(gamesTop);
 });
 
@@ -66,21 +64,6 @@ route.get("/games/:id/ads", async (request: Request, response: Response) => {
   );
 });
 
-route.get("/ads/:id/discord", async (request: Request, response: Response) => {
-  const adId = request.params.id;
-  const ad = await prisma.ad.findUniqueOrThrow({
-    select: {
-      discord: true,
-    },
-    where: {
-      id: adId,
-    },
-  });
-  return response.json({
-    discord: ad.discord,
-  });
-});
-
 route.post("/games/:id/ads", async (request: Request, response: Response) => {
   const gameId = request.params.id;
   const body = request.body;
@@ -98,6 +81,21 @@ route.post("/games/:id/ads", async (request: Request, response: Response) => {
     },
   });
   return response.json(ad);
+});
+
+route.get("/ads/:id/discord", async (request: Request, response: Response) => {
+  const adId = request.params.id;
+  const ad = await prisma.ad.findUniqueOrThrow({
+    select: {
+      discord: true,
+    },
+    where: {
+      id: adId,
+    },
+  });
+  return response.json({
+    discord: ad.discord,
+  });
 });
 
 export { route };
