@@ -46,7 +46,9 @@ route.get("/games/:id/ads", async (request: Request, response: Response) => {
       hourEnd: true,
     },
     where: {
-      id: gameId,
+      game: {
+        id: gameId,
+      },
     },
     orderBy: {
       createdAt: "desc",
