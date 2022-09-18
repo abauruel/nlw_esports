@@ -1,8 +1,21 @@
-<p align='center' >
+<p align="center">
 <image src='./web/src/assets/nlw_logo.svg' height='200px' width='200px'>
 </p>
+<h1 align="center">
+<image src='Capa.png' width='auto' height='500'/>
+</h1>
 
-<image src='Capa.png' width='100%' height='400'/>
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/abauruel/nlw_esports">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/abauruel/nlw_esports">
+  <a href="https://github.com/abauruel/nlw_esports/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/abauruel/nlw_esports">
+  </a>
+  <a href="https://github.com/abauruel/nlw_esports/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/abauruel/nlw_esports">
+  </a>
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+</p>
 
 ## Project
 This project is about applications that can register the game that usually plays and publish your ads informing days of the week and hours that you typically play, applying backend, web, and mobile knowledge.
