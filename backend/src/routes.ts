@@ -67,22 +67,29 @@ route.get("/games/:id/ads", async (request: Request, response: Response) => {
 });
 
 route.post("/games/:id/ads", async (request: Request, response: Response) => {
-  const gameId = request.params.id;
-  const body = request.body;
-
-  const ad = await prisma.ad.create({
-    data: {
-      gameId,
-      name: body.name,
-      yearsPlaying: body.yearsPlaying,
-      discord: body.discord,
-      weekDays: body.weekdays.join(","),
-      hourStart: convertHourStringToMinutes(body.hourStart),
-      hourEnd: convertHourStringToMinutes(body.hourEnd),
-      useVoiceChannel: body.useVoiceChannel,
-    },
-  });
-  return response.json(ad);
+  try {
+    const gameId = request.params.id;
+    const body = request.body;
+    console.log();
+    const ad = await prisma.ad.create({
+      data: {
+        gameId,
+        name: body.name,
+        yearsPlaying: body.yearsPlaying,
+        discord: body.discord,
+        weekDays:
+          body.weekDays.length > 1
+            ? body.weekdays.join(",")
+            : body.weekDays.join(),
+        hourStart: convertHourStringToMinutes(body.hourStart),
+        hourEnd: convertHourStringToMinutes(body.hourEnd),
+        useVoiceChannel: body.useVoiceChannel,
+      },
+    });
+    return response.json(ad);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 route.get("/ads/:id/discord", async (request: Request, response: Response) => {
